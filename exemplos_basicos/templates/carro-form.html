@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="carro-cadastrar" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="modelo">Modelo</label>
+            <input type="text" name="modelo" id="modelo">
+        </div>
+        <div>
+            <label for="preco">Preço</label>
+            <input type="text" name="preco" id="preco">
+        </div>
+        <div>
+            <label for="ano-fabricacao">Ano Fabricação</label>
+            <input type="text" name="ano-fabricacao" id="ano-fabricacao">
+        </div>
+
+        <div>
+            <label for="cor">Cor</label>
+            <select name="cor" id="cor">
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option value="Azul">Azul</option>
+                <option value="Branoc">Branco</option>
+                <option value="Prata">Prata</option>
+                <option value="Preto">Preto</option>
+                <option value="Vermelho">Vermelho</option>
+            </select>
+        </div>
+        <button type="submit">Salvar</button>
+
+    </form>
+
+</body>
+
+</html>
