@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="columns is-centered">
+    <h1 class="title">Lista de Colaboradores</h1>
+</div>
+
+<a 
+        class="button is-link is-pulled-right mb-3"
+        href="/interno/colaborador/cadastrar">
+        <span class="icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+        <span>Cadastrar</span>
+    </a>
+    <table class="table is-striped is-fullwidth is-bordered is-hoverable">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de nascimento</th>
+                <th>Empresa</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for colaborador in colaboradores %}
+            <tr>
+                <td>{{colaborador.pk}}</td>
+                <td>{{colaborador.nome}}</td>
+                <td>{{colaborador.cpf}}</td>
+                <td>{{colaborador.data_nascimento}}</td>
+                <td>{{colaborador.empresa.nome}}</td>
+                <td>
+                    <a 
+                        class="button is-warning is-outlined"
+                        href="/interno/colaborador/editar/{{colaborador.pk}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-pencil"></i>
+                        </span>
+                        <span>
+                            Editar
+                        </span>
+                    </a>
+                    <a 
+                        class="button is-danger is-outlined"
+                        href="/interno/colaborador/apagar/{{colaborador.pk}}">
+                        <span class="icon"><i class="fa-solid fa-trash"></i></span>
+                        <span>Apagar</span>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button type="submit">Cadastrar</button>
+</form>
+
+<!-- http://127.0.0.1:8000/publico/clientes/cadastrar -->

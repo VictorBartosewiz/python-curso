@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="columns is-centered">
+    <h1 class="title">Lista de Empresas</h1>
+</div>
+    <a 
+        class="button is-link is-pulled-right mb-3"
+        href="/interno/empresa/cadastrar">
+        <span class="icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+        <span>Cadastrar</span>
+    </a>
+    <table class="table is-striped is-fullwidth is-bordered is-hoverable">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Cnpj</th>
+                <th>Razao social</th>
+                <th>IE</th>
+                <th>Faturamento</th>
+                <th>Colaboradores</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empresa in empresas %}
+            <tr>
+                <td>{{empresa.pk}}</td>
+                <td>{{empresa.nome}}</td>
+                <td>{{empresa.cnpj}}</td>
+                <td>{{empresa.razao_social}}</td>
+                <td>{{empresa.inscricao_estadual}}</td>
+                <td>{{empresa.faturamento}}</td>
+                <td>{{empresa.colaboradores_total}}</td>
+                <td>   
+                <a 
+                        class="button is-warning is-outlined"
+                        href="/interno/empresa/editar/{{empresa.pk}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-pencil"></i>
+                        </span>
+                        <span>
+                            Editar
+                        </span>
+                    </a>
+                    <a 
+                        class="button is-danger is-outlined"
+                        href="/interno/empresa/apagar/{{empresa.pk}}">
+                        <span class="icon"><i class="fa-solid fa-trash"></i></span>
+                        <span>Apagar</span>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

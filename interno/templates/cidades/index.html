@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="columns is-centered">
+    <h1 class="title">Lista de Cidades</h1>
+</div>
+
+<a 
+        class="button is-link is-pulled-right mb-3"
+        href="/interno/cidade/cadastrar">
+        <span class="icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+        <span>Cadastrar</span>
+    </a>
+    <table class="table is-striped is-fullwidth is-bordered is-hoverable">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Quantidade de Habitantes</th>
+                <th>clima</th>
+                <th>Data de Fundação</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cidade in cidades %}
+            <tr>
+                <td>{{cidade.pk}}</td>
+                <td>{{cidade.nome}}</td>
+                <td>{{cidade.quantidade_habitantes}}</td>
+                <td>{{cidade.clima}}</td>
+                <td>{{cidade.data_fundacao}}</td>
+                <td>{{cidade.estado.nome}}</td>
+                <td>
+                    <a 
+                        class="button is-warning is-outlined"
+                        href="/interno/cidade/editar/{{cidade.pk}}">
+                        <span class="icon">
+                            <i class="fa-solid fa-pencil"></i>
+                        </span>
+                        <span>
+                            Editar
+                        </span>
+                    </a>
+                    <a 
+                        class="button is-danger is-outlined"
+                        href="/interno/cidade/apagar/{{cidade.pk}}">
+                        <span class="icon"><i class="fa-solid fa-trash"></i></span>
+                        <span>Apagar</span>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
